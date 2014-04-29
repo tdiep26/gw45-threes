@@ -1,0 +1,46 @@
+NAME
+git@github.com:tdiep26/gw45-threes.git
+APCS2 pd9
+HW#34 -- GridWorld, Part 4
+2014-04-29
+
+Do You Know?
+Set 7
+1. getActors(); processActors(); getMoveLocations(); selectMoveLocation(); makeMove().
+2. a. Gets the actors to process
+   b. Processes the actors
+   c. Gets locations to move next
+   d. Selects the location to move next
+   e. Moves to the next location
+3. It depends on the type of critter and what actors it affects.
+4. Critters can:
+   a. Change an actor's color
+   b. Make them move
+   c. Remove them from the grid
+5. a. getMoveLocations(), to find out where it can move
+   b. selectMoveLocation(), to find out where it will move
+   c. makeMove(), to physically move itself to the chosen location
+6. There is no constructor because you never 
+
+
+Do You Know?
+
+Set 8
+
+…
+
+Do You Know?
+
+Set 9
+
+…
+
+A new type of Critter has appeared on the scene:
+
+_______Critter Specs:
+
+<Description of what this subclass of Critter can do, and how it does it. Adhere as closely as possible to prior examples shown in the GridWorld packet.>
+
+_______Critter Test Cases:
+
+<Precise descriptions of expected behavior on specific triggers (eg, method inputs). Adhere as closely as possible to prior examples shown in the GridWorld packet.>

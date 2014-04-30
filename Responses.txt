@@ -20,27 +20,40 @@ Set 7
 5. a. getMoveLocations(), to find out where it can move
    b. selectMoveLocation(), to find out where it will move
    c. makeMove(), to physically move itself to the chosen location
-6. There is no constructor because you never 
+6. There is no constructor because there are no instance variables that need to be assigned; as a result, the default constructor is used.
 
 
 Do You Know?
-
 Set 8
-
-…
+1. Even though act() is not overridden, it is different because the methods that it calls (processActors, makeMove) are overridden.
+2. It still calls super.makeMove() because it still needs to move like an actor after it changes direction.
+3. You can take the block of code from the Bug class:
+   Grid<Actor> gr = getGrid(); 
+   if (gr == null) 
+      return; 
+   Location loc = getLocation(); 
+   Flower flower = new Flower(getColor()); 
+   flower.putSelfInGrid(gr, loc); 
+4. It doesn't need to change anything, ChameleonCritter still gets all of its neighboring actors
+5. Actor contains getLocation();
+6. It can use the getGrid() method from its superclass Actor.
 
 Do You Know?
-
 Set 9
-
-…
+1. CrabCritter doesn't change how it processes its neighbors, only which neighbors it processes. Therefore, processActors() doesn't need to be overridden.
+2. CrabCritter only looks at the locations in front and adjacent to itself, and it only eats actors that aren't critters or rocks.
+3. It is used because CrabCritter only moves in specific directions, so it only needs to get those locations.
+4. (4, 3); (4, 4); (4, 5)
+5. Both classes move to random locations in their list of acceptable locations to move, but CrabCritter can only move to its left or right. CrabCritter also turns when it can't move, while Critter just disappears.
+6. If it can't move, it turns.
+7. They don't eat each other because they are still critters, and critters don't eat each other.
 
 A new type of Critter has appeared on the scene:
 
-_______Critter Specs:
+BishopCritter Specs:
 
-<Description of what this subclass of Critter can do, and how it does it. Adhere as closely as possible to prior examples shown in the GridWorld packet.>
+This critter moves like a bishop: it only moves diagonally in each direction. It also only eats acceptable actors in diagonal locations. Like CrabCritter, it turns if it can't move.
 
-_______Critter Test Cases:
+BishopCritter Test Cases:
 
-<Precise descriptions of expected behavior on specific triggers (eg, method inputs). Adhere as closely as possible to prior examples shown in the GridWorld packet.>
+The only new test cases would be if every diagonal adjacent location were occupied. In this case, the critter would turn 45 degrees to open up a new set of possibilities.

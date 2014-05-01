@@ -6,7 +6,8 @@ HW#35 -- GridWorld, Part 5
 
 Do You Know?
 Set 10
-…
+
+    1) IsValid is specefied in the Grid<E> interface. It is implemented in the boundedGrid and unboundedGrid classes.
 Do You Know?
 Set 11
 …

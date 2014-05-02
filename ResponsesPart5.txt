@@ -6,8 +6,19 @@ HW#35 -- GridWorld, Part 5
 
 Do You Know?
 Set 10
+1. IsValid is specified in the Grid<E> interface. It is implemented in the BoundedGrid and UnboundedGrid classes.
+2. Only getValidAdjacentLocations() calls isValid; the others don't need to call it because they call getValidAdjacentLocations().
+3. The getNeighbors() method calls getOccupiedAdjacentLocations(), which calls getValidAdjacentLocations(), which calls isValid(), which is implemented in BoundedGrid and UnboundedGrid. getNeighbors also uses the get() method, which is also implemented in BoundedGrid and UnboundedGrid.
+4. the get() method is called to find objects of type E because getEmptyAdjacentLocations() finds the locations that do not have those objects.
+5. It would only check the locations directly to the north, east, south and west of the current location.
 
-    1) IsValid is specefied in the Grid<E> interface. It is implemented in the boundedGrid and unboundedGrid classes.
 Do You Know?
 Set 11
-…
+1. In the constructor, if the input parameters "rows" or "columns" are valued an integer less than 1, the method throws an error.
+2. It returns the length of the array in the 0th row; this is based on the assumption that every row has the same number of columns.
+3. A Location is only valid if its row coordinate is between 0 and the number of rows, and its column coordinate is between 0 and the number of columns.
+4. In getOccupiedLocations(), an ArrayList is returned, and its runtime is O(rc).
+5. The get() method takes a Location, returns an object of type E, and has a runtime of O(1).
+6. Exceptions are thrown in the put() method if the desired location is not in the grid, or if the object argument is null. This method runs in O(1) time.
+7. remove() returns an object of type E; if one attempts to remove an item from an empty location, null will be returned; this method runs in O(1) time.
+8. I believe this is an efficient implementation; most of the methods called have an O(1) runtime, except for the getOccupiedLocations() method where checking every Location is unavoidable.

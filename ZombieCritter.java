@@ -1,3 +1,34 @@
+/*****************************************************************
+ * NAME --- THREE
+ * APCS pd 9
+ * HW 35 GridWorld, Part 5
+ * 2014-05-01
+ *
+ * class ZombieCritter
+ *
+ * BEACUASE:
+ * Zombies seem fun, it's straightforward to test, and it's not too
+ * boring to implement
+ *
+ * SPECIFICATIONS:
+ * Create a class ZombieCritter that extends the Critter class. 
+ * A ZombieCritter moves differently and interacts with actors in a different way. 
+ * A ZombieCritter will turn all critters and actors, except for rocks, 
+ * flowers and other ZombieCritters, in zombies provided that they are directly in front of the ZombieCritter.
+ * The ZombieCritter will also move by choosing a random, empty neighboring tile and moving onto it. 
+ * If there is no such tile it will not move.
+ *
+ * TEST CASES:
+ * Create a class ZombieCritter that extends the Critter class. 
+ * A ZombieCritter should be created as expected expect that it should always be green.
+ * A ZombieCritter should wander randomly around a grid, but avoid obstacles like rocks and edges.
+ * A ZombieCritter should turn any critter that it runs into into a zombie, except for flowers, rocks,
+ * and other zombies. A ZombieCritter should be awesome. 
+ *
+ * ERRATA:
+ * Straightforward enough...
+ *****************************************************************/
+
 import info.gridworld.actor.*;
 import info.gridworld.grid.*;
 

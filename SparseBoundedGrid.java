@@ -1,6 +1,10 @@
 package info.gridworld.grid;
 
+import info.gridworld.grid.Grid; 
+import info.gridworld.grid.AbstractGrid; 
+import info.gridworld.grid.Location; 
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 public class SparseBoundedGrid<E> extends AbstractGrid<E>
 {
@@ -11,7 +15,7 @@ public class SparseBoundedGrid<E> extends AbstractGrid<E>
             throw new IllegalArgumentException("rows <= 0");
         if (cols <= 0)
             throw new IllegalArgumentException("cols <= 0");
-        occupantArray = new ArrayList<LinkedList<Object>()>(rows);
+        occupantArray = new ArrayList<LinkedList<Object>>(rows);
     }
 
     public int getNumRows() {
@@ -56,7 +60,7 @@ public class SparseBoundedGrid<E> extends AbstractGrid<E>
             throw new NullPointerException("obj == null");
 
         E oldOccupant = get(loc);
-        occupantArray.get(loc.getRow()).add(loc.getCol()) = obj;
+        occupantArray.get(loc.getRow()).set(loc.getCol(),obj);
         return oldOccupant;
     }
 
@@ -64,6 +68,6 @@ public class SparseBoundedGrid<E> extends AbstractGrid<E>
         if (!isValid(loc))
             throw new IllegalArgumentException("Location " + loc
                     + " is not valid");
-	return occupantArray.get(loc.getRow()).remove(loc.getCol());
+	return (E) occupantArray.get(loc.getRow()).set(loc.getCol(),(Object)null);
     }
 }

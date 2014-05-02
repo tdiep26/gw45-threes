@@ -4,14 +4,14 @@ import java.util.ArrayList;
 
 public class SparseBoundedGrid<E> extends AbstractGrid<E>
 {
-    private ArrayList<SparseGridNode> occupantArray;
+    private ArrayList<LinkedList<Object>> occupantArray;
 
     public SparseBoundedGrid(int rows, int cols) {
         if (rows <= 0)
             throw new IllegalArgumentException("rows <= 0");
         if (cols <= 0)
             throw new IllegalArgumentException("cols <= 0");
-        occupantArray = new ArrayList<LinkedList<Object>(cols)>(rows);
+        occupantArray = new ArrayList<LinkedList<Object>()>(rows);
     }
 
     public int getNumRows() {
@@ -30,13 +30,9 @@ public class SparseBoundedGrid<E> extends AbstractGrid<E>
     public ArrayList<Location> getOccupiedLocations() {
         ArrayList<Location> theLocations = new ArrayList<Location>();
 
-        // Look at all grid locations.
-        for (int r = 0; r < getNumRows(); r++)
-        {
-            for (int c = 0; c < getNumCols(); c++)
-            {
-                // If there's an object at this location, put it in the array.
-                Location loc = new Location(r, c);
+         for (int r = 0; r < getNumRows(); r++) {
+            for (int c = 0; c < getNumCols(); c++) {
+		Location loc = new Location(r, c);
                 if (get(loc) != null)
                     theLocations.add(loc);
             }
@@ -45,37 +41,29 @@ public class SparseBoundedGrid<E> extends AbstractGrid<E>
         return theLocations;
     }
 
-    public E get(Location loc)
-    {
+    public E get(Location loc) {
         if (!isValid(loc))
             throw new IllegalArgumentException("Location " + loc
                     + " is not valid");
-        return (E) occupantArray[loc.getRow()][loc.getCol()]; // unavoidable warning
+        return (E) occupantArray.get(loc.getRow()).get(loc.getCol()); 
     }
 
-    public E put(Location loc, E obj)
-    {
+    public E put(Location loc, E obj) {
         if (!isValid(loc))
             throw new IllegalArgumentException("Location " + loc
                     + " is not valid");
         if (obj == null)
             throw new NullPointerException("obj == null");
 
-        // Add the object to the grid.
         E oldOccupant = get(loc);
-        occupantArray[loc.getRow()][loc.getCol()] = obj;
+        occupantArray.get(loc.getRow()).add(loc.getCol()) = obj;
         return oldOccupant;
     }
 
-    public E remove(Location loc)
-    {
+    public E remove(Location loc) {
         if (!isValid(loc))
             throw new IllegalArgumentException("Location " + loc
                     + " is not valid");
-        
-        // Remove the object from the grid.
-        E r = get(loc);
-        occupantArray[loc.getRow()][loc.getCol()] = null;
-        return r;
+	return occupantArray.get(loc.getRow()).remove(loc.getCol());
     }
 }

@@ -78,7 +78,7 @@ public class UnboundedGrid2<E> extends AbstractGrid<E>
         return theLocations;
     }
 
-    public E get(Location loc)
+    public E get(Location loc)//O(1)
     {
         if (!isValid(loc))
             throw new IllegalArgumentException("Location " + loc
@@ -86,7 +86,7 @@ public class UnboundedGrid2<E> extends AbstractGrid<E>
         return (E) occupantArray[loc.getRow()][loc.getCol()]; // unavoidable warning
     }
 
-    public E put(Location loc, E obj)
+    public E put(Location loc, E obj)//O(1) if array doesn't need to be extended, O(n^2) if it does.
     {
 	
         if (loc.getRow() < 0 || loc.getCol() < 0) 
